@@ -20,11 +20,7 @@ $(document).ready(function() {
         html2canvas(document.body).then(function(canvas) {
             console.log(canvas);
             saveAs(canvas.toDataURL(), 'file-name.png');
-
-            location.href = 'whatsapp://send?text=foto';
         });
-        
-
     });
 });
 
