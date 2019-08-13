@@ -21,7 +21,7 @@ $(document).ready(function() {
             console.log(canvas);
             saveAs(canvas.toDataURL(), 'file-name.png');
 
-            location.href = 'whatsapp://send?text=';
+            location.href = 'whatsapp://send?text=foto';
         });
         
 
