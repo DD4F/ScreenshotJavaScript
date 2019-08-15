@@ -17,9 +17,13 @@ $(document).ready(function() {
 
     $("#screenshot").click(function(){
         console.log("Click en screenshot");
+        var fecha = new Date().toLocaleTimeString();
         html2canvas(document.body).then(function(canvas) {
             console.log(canvas);
-            saveAs(canvas.toDataURL(), 'file-name.png');
+            var name = "captura" + fecha +".png"; 
+            saveAs(canvas.toDataURL(), name);
+
+            location.href = 'whatsapp://send?text=Envia%20la%20captura%20descargada';
         });
     });
 });
