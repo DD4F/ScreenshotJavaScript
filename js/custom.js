@@ -21,7 +21,7 @@ $(document).ready(function() {
             console.log(canvas);
             saveAs(canvas.toDataURL(), 'file-name.png');
 
-            location.href = "https://api.whatsapp.com/api/send?text=Envia%20la%20captura%20descargada";
+            location.href = 'whatsapp://send?text=Envia%20la%20captura%20descargada';
         });
     });
 });
