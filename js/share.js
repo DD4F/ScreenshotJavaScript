@@ -7,11 +7,19 @@ $(document).ready(function(){
             // Evitamos el comportamiento por default del enlace
             e.preventDefault();
 
+            html2canvas(document.body).then(function(canvas) {
+                console.log(canvas);
+                canvas.toBlob(blob => navigator.share({blob: blob, mimeType: 'image/png'}),
+                'image/png');
+            })
+
+            /*
             // navigator.share recibe un objeto con los siguientes parámetros:
             navigator.share({
                 title: "Screenshot Share", // Título
                 text: "Envio captura de pantalla" // Texto
             })
+            */
 
             .then(() => console.log("Successful share")) // Si todo sale bien
             .catch((err) => console.log(`Error sharing ${err}`)); // Si hubo un error
