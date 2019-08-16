@@ -21,8 +21,8 @@ $(document).ready(function(){
             })
             */
 
-            .then(() => console.log("Successful share")) // Si todo sale bien
-            .catch((err) => console.log(`Error sharing ${err}`)); // Si hubo un error
+            //.then(() => console.log("Successful share")) // Si todo sale bien
+            //.catch((err) => console.log(`Error sharing ${err}`)); // Si hubo un error
 
             return false;
         });
