@@ -6,18 +6,18 @@ $(document).ready(function(){
         $buttonShare.addEventListener("click", function(e) {
             // Evitamos el comportamiento por default del enlace
             e.preventDefault();
-            var image = new Image();
+            var img;
 
             html2canvas(document.body).then(function(canvas) {
                 console.log(canvas);
-                image.src = canvas.toDataURL("image/png");
+                img = canvas.toDataURL();
             })
 
             var fecha = new Date().toLocaleTimeString();
             var name = "captura" + fecha +".png";
             const fileName = name;
             const options = {type: 'image/png'};
-            const file = new File(image, fileName, options);
+            const file = new File(img, fileName, options);
 
             // navigator.share recibe un objeto con los siguientes parámetros:
             navigator.share({
