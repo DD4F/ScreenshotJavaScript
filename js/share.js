@@ -40,7 +40,7 @@ $(document).ready(function(){
                     text: 'Envio Captura de pantalla',
                     files: [dataimg]
                 }
-                navigator.share(dataimg)
+                navigator.share(data)
 
                 .then(() => console.log("Successful share")) // Si todo sale bien
                 .catch((err) => console.log(`Error sharing ${err}`)); // Si hubo un error
