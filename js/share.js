@@ -17,14 +17,14 @@ $(document).ready(function(){
                     files: [canvas]
                 })
                 */
-
-                const options = {type: 'text/plain'};
-                const first = new File(['one'], 'first.txt', options);
+                const fileBits = [canvas];
+                const fileName = 'capture.png';
+                const options = {type: 'image/png'};
+                const file = new File(fileBits, fileName, options);
                 const data = {
-                    title: 'Files 1',
-                    text: 'Here are the numbers',
-                    url: 'https://example.com/',
-                    files: [first]
+                    title: 'Captura APP',
+                    text: 'Envio Captura de pantalla',
+                    files: [file]
                 }
                 navigator.share(data)
 
