@@ -26,8 +26,7 @@ $(document).ready(function(){
                     url: 'https://example.com/',
                     files: [first]
                 }
-                setupManualShareTest(data);
-                callWhenButtonClicked(() => navigator.share(data)
+                navigator.share(data)
 
                 .then(() => console.log("Successful share")) // Si todo sale bien
                 .catch((err) => console.log(`Error sharing ${err}`)); // Si hubo un error
