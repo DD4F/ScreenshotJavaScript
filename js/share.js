@@ -32,13 +32,15 @@ $(document).ready(function(){
                 var img = canvas.toDataURL();
                 // Convert Base64 image to binary
                 var file = dataURItoBlob(img);
+                var dataimg = new FormData();
+                dataimg.append('media[]', file, 'captura.png');
 
                 const data = {
                     title: 'Captura APP',
                     text: 'Envio Captura de pantalla',
-                    files: [file]
+                    files: [dataimg]
                 }
-                navigator.share(data)
+                navigator.share(dataimg)
 
                 .then(() => console.log("Successful share")) // Si todo sale bien
                 .catch((err) => console.log(`Error sharing ${err}`)); // Si hubo un error
