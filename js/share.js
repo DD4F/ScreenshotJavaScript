@@ -10,12 +10,24 @@ $(document).ready(function(){
             html2canvas(document.body).then(function(canvas) {
                 console.log(canvas);
                 
-                // navigator.share recibe un objeto con los siguientes parámetros:
+                /*// navigator.share recibe un objeto con los siguientes parámetros:
                 navigator.share({
                     title: "Screenshot Share", // Título
                     text: "Envio captura de pantalla", // Texto
                     files: [canvas]
                 })
+                */
+
+                const options = {type: 'text/plain'};
+                const first = new File(['one'], 'first.txt', options);
+                const data = {
+                    title: 'Files 1',
+                    text: 'Here are the numbers',
+                    url: 'https://example.com/',
+                    files: [first]
+                }
+                setupManualShareTest(data);
+                callWhenButtonClicked(() => navigator.share(data)
 
                 .then(() => console.log("Successful share")) // Si todo sale bien
                 .catch((err) => console.log(`Error sharing ${err}`)); // Si hubo un error
