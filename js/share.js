@@ -1,3 +1,22 @@
+
+function dataURItoBlob(dataURI) {
+    // convert base64/URLEncoded data component to raw binary data held in a string
+    var byteString;
+    if (dataURI.split(',')[0].indexOf('base64') >= 0)
+        byteString = atob(dataURI.split(',')[1]);
+    else
+        byteString = unescape(dataURI.split(',')[1]);
+    // separate out the mime component
+    var mimeString = dataURI.split(',')[0].split(':')[1].split(';')[0];
+    // write the bytes of the string to a typed array
+    var ia = new Uint8Array(byteString.length);
+    for (var i = 0; i < byteString.length; i++) {
+        ia[i] = byteString.charCodeAt(i);
+    }
+    return new Blob([ia], {type:mimeString});
+}
+
+
 $(document).ready(function(){
     // Se verifica si el navegador es compatible con dicha característica:
     if(navigator.share) {
@@ -10,18 +29,14 @@ $(document).ready(function(){
             html2canvas(document.body).then(function(canvas) {
                 console.log(canvas);
                 
-                /*// navigator.share recibe un objeto con los siguientes parámetros:
-                navigator.share({
-                    title: "Screenshot Share", // Título
-                    text: "Envio captura de pantalla", // Texto
-                    files: [canvas]
-                })
-                */
-               var uri = canvas.toDataURL();
+                var img = canvas.toDataURL();
+                // Convert Base64 image to binary
+                var file = dataURItoBlob(img);
+
                 const data = {
                     title: 'Captura APP',
                     text: 'Envio Captura de pantalla',
-                    files: [uri]
+                    files: [file]
                 }
                 navigator.share(data)
 
