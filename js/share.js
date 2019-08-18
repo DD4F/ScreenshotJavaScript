@@ -17,26 +17,16 @@ $(document).ready(function(){
                     files: [canvas]
                 })
                 */
-                var filename = "captura.png"; 
-                var uri = canvas.toDataURL();
-                
-                var link = document.createElement('a');
-
-                if (typeof link.download === 'string') {
-                    link.href = uri;
-                    link.download = filename;
-
-                    const data = {
-                        title: 'Captura APP',
-                        text: 'Envio Captura de pantalla',
-                        url: link
-                    }
-                    
-                    navigator.share(data)
-    
-                    .then(() => console.log("Successful share")) // Si todo sale bien
-                    .catch((err) => console.log(`Error sharing ${err}`)); // Si hubo un error
+               var uri = canvas.toDataURL();
+                const data = {
+                    title: 'Captura APP',
+                    text: 'Envio Captura de pantalla',
+                    files: [uri]
                 }
+                navigator.share(data)
+
+                .then(() => console.log("Successful share")) // Si todo sale bien
+                .catch((err) => console.log(`Error sharing ${err}`)); // Si hubo un error
   
             })
             return false;
